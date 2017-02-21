@@ -1,0 +1,9 @@
+# movieZup
+Teste para a vaga de Dev iOS Jr.
+
+O teste consiste em consultar a API do OMDb [http://www.omdbapi.com], que é um Web Service que pode ser utilizado para 
+obter ou buscar informações de filmes. Todo o conteúdo e imagens são inseridas e mantidas pelos usuários.”
+
+Fazer um aplicativo que possibilite o cadastro de filmes (imputando somente os nomes) e que para cada filme cadastrado 
+informações como título, ano, imagens, etc. sejam buscadas através de consulta a esta API do OMDb.
+Os dados devem ser salvos para possibilitar acesso off-line aos filmes cadastrados.
