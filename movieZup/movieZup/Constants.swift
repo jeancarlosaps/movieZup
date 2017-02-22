@@ -2,14 +2,19 @@
 //  Constants.swift
 //  movieZup
 //
-//  Created by Jean Carlos on 2/4/17.
+//  Created by Jean Carlos on 2/21/17.
 //  Copyright © 2017 Jean Carlos. All rights reserved.
 //
 
 import Foundation
 
 struct Constants {
-    struct URL {
-        static let GetURL = "http://img.omdbapi.com/?i=tt2294629&apikey=affee530"
+    struct Url {
+        static let GetURL = ""
+    }
+    
+    struct Key {
+        static let publicKey = ""
+        static let privateKey = ""
     }
 }
