@@ -9,6 +9,15 @@
 import UIKit
 
 class DetailMovieController: UIViewController {
+    
+    //MARK: Outlets
+    @IBOutlet weak var titleMovieDetail: UILabel!
+    @IBOutlet weak var yearMovieDetail: UILabel!
+    @IBOutlet weak var genreMovieDetail: UILabel!
+    @IBOutlet weak var posterMovieDetail: UIImageView!
+    @IBOutlet weak var directorMovieDetail: UILabel!
+    @IBOutlet weak var plotMovieDetail: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
