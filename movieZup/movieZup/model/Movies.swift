@@ -13,17 +13,55 @@
 */
 import Foundation
 
-class Movies{
+struct Movies{
     let title:String
     let year:String
-    let rated: String
-    let genre: String
-    let director: String
-    let plot: String //Enrredo, descrição.
-    let poster: String
+    let rated:String
+    let genre:String
+    let director:String
+    let plot:String //Enrredo, descrição.
+    let poster:String
     let type:String
-    
-    init(title:String, year:String, rated:String, genre:String, director:String, plot:String, poster:String, type:String) {
+}
+
+enum SerializationError:Error{
+    case missing(String)
+}
+
+extension Movies{
+    init?(json:[String:Any]) throws {
+        guard let title = json["Title"] as? String else{
+            throw SerializationError.missing("Title")
+        }
+        
+        guard let year = json["Year"] as? String else{
+            throw SerializationError.missing("Year")
+        }
+        
+        guard let rated = json["Rated"] as? String else{
+            throw SerializationError.missing("Rated")
+        }
+        
+        guard let genre = json["Genre"] as? String else{
+            throw SerializationError.missing("Genre")
+        }
+        
+        guard let director = json["Director"] as? String else{
+            throw SerializationError.missing("Director")
+        }
+        
+        guard let plot = json["Plot"] as? String else{
+            throw SerializationError.missing("Plot")
+        }
+        
+        guard let poster = json["Poster"] as? String else{
+            throw SerializationError.missing("Poster")
+        }
+        
+        guard let type = json["Type"] as? String else{
+            throw SerializationError.missing("Type")
+        }
+        
         self.title = title
         self.year = year
         self.rated = rated
@@ -34,5 +72,27 @@ class Movies{
         self.type = type
     }
 }
-    
+
+//class Movies{
+//    let title:String
+//    let year:String
+//    let rated: String
+//    let genre: String
+//    let director: String
+//    let plot: String //Enrredo, descrição.
+//    let poster: String
+//    let type:String
+//    
+//    init(title:String, year:String, rated:String, genre:String, director:String, plot:String, poster:String, type:String) {
+//        self.title = title
+//        self.year = year
+//        self.rated = rated
+//        self.genre = genre
+//        self.director = director
+//        self.plot = plot
+//        self.poster = poster
+//        self.type = type
+//    }
+//}
+
 

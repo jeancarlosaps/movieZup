@@ -15,6 +15,8 @@
 		D96939591E46713300426E14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96939571E46713300426E14 /* LaunchScreen.storyboard */; };
 		D96939631E4674BC00426E14 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96939621E4674BC00426E14 /* Movies.swift */; };
 		D96939651E467B7900426E14 /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96939641E467B7900426E14 /* MoviesAPI.swift */; };
+		D969618C1E685FF50055C1C0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969618B1E685FF50055C1C0 /* CustomTableViewCell.swift */; };
+		D969618F1E6865D70055C1C0 /* iOSwift.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D969618E1E6865D70055C1C0 /* iOSwift.jpeg */; };
 		D99096F21E5CB21C00101A90 /* DataMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99096F11E5CB21C00101A90 /* DataMovie.swift */; };
 		D99096F51E5CB39500101A90 /* DetailMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99096F41E5CB39500101A90 /* DetailMovieController.swift */; };
 		D99096FE1E5CE7F800101A90 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99096FD1E5CE7F800101A90 /* Constants.swift */; };
@@ -31,6 +33,8 @@
 		D969395A1E46713300426E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D96939621E4674BC00426E14 /* Movies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		D96939641E467B7900426E14 /* MoviesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
+		D969618B1E685FF50055C1C0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
+		D969618E1E6865D70055C1C0 /* iOSwift.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iOSwift.jpeg; sourceTree = "<group>"; };
 		D99096F11E5CB21C00101A90 /* DataMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMovie.swift; sourceTree = "<group>"; };
 		D99096F41E5CB39500101A90 /* DetailMovieController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMovieController.swift; sourceTree = "<group>"; };
 		D99096FD1E5CE7F800101A90 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -72,7 +76,9 @@
 				D96939611E46725A00426E14 /* model */,
 				D99096F01E5CB1D900101A90 /* Class */,
 				D969394B1E46713300426E14 /* AppDelegate.swift */,
+				D969618D1E68600F0055C1C0 /* Cell */,
 				D969394F1E46713300426E14 /* Main.storyboard */,
+				D969618E1E6865D70055C1C0 /* iOSwift.jpeg */,
 				D96939551E46713300426E14 /* Assets.xcassets */,
 				D96939571E46713300426E14 /* LaunchScreen.storyboard */,
 				D969395A1E46713300426E14 /* Info.plist */,
@@ -95,6 +101,14 @@
 				D96939621E4674BC00426E14 /* Movies.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		D969618D1E68600F0055C1C0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D969618B1E685FF50055C1C0 /* CustomTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D99096F01E5CB1D900101A90 /* Class */ = {
@@ -176,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D96939591E46713300426E14 /* LaunchScreen.storyboard in Resources */,
+				D969618F1E6865D70055C1C0 /* iOSwift.jpeg in Resources */,
 				D96939561E46713300426E14 /* Assets.xcassets in Resources */,
 				D96939511E46713300426E14 /* Main.storyboard in Resources */,
 			);
@@ -188,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D969618C1E685FF50055C1C0 /* CustomTableViewCell.swift in Sources */,
 				D99096F21E5CB21C00101A90 /* DataMovie.swift in Sources */,
 				D96939541E46713300426E14 /* movieZup.xcdatamodeld in Sources */,
 				D96939651E467B7900426E14 /* MoviesAPI.swift in Sources */,
