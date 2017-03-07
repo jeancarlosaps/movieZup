@@ -7,3 +7,7 @@ obter ou buscar informações de filmes. Todo o conteúdo e imagens são ins
 Fazer um aplicativo que possibilite o cadastro de filmes (imputando somente os nomes) e que para cada filme cadastrado 
 informações como título, ano, imagens, etc. sejam buscadas através de consulta a esta API do OMDb.
 Os dados devem ser salvos para possibilitar acesso off-line aos filmes cadastrados.
+
+Instruções para execução:
+
+Executar no terminal o comando `pod update`.
