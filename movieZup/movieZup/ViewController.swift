@@ -7,66 +7,30 @@
 //
 
 import UIKit
+import Alamofire
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+import SDWebImage
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var searchMovie: UISearchBar!
     @IBOutlet weak var tableViewMovie: UITableView!
+    @IBOutlet weak var progress : UIActivityIndicatorView!
     
     //MARK: Properties
     var arrayMovieList = [Movies]()
-    let moviesForSearch = "Batman"
+    var searchActive:Bool = false
+    var filtered:[Movies] = []
     
-    //Função que faz o request na API do github;
-        func request() {
-            typealias RepoMovies = [String:Any]
-            let repoUrlString = "http://www.omdbapi.com/?t=\(moviesForSearch)&y=&plot=short&r=json"
-    
-            let session = URLSession.shared
-            (session.dataTask(with: URL(string:repoUrlString)!) { [weak self] (data, reponse, error) in
-    
-                //MARK: Tratamento de erro;
-                guard error == nil else { return }
-    
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? RepoMovies {
-    
-                        // O array de repositórios se encontra na chave "itens" do JSON, portanto, precisamos pegá-lo antes;
-                        guard let moviesJson = json[""] as? [RepoMovies] else { return }
-    
-                        do {
-                            self?.arrayMovieList = try moviesJson.flatMap(Movies.init)
-    
-                            DispatchQueue.main.async {
-                                self?.tableViewMovie.reloadData()
-                            }
-                        } catch let error {
-                            print(error)
-                        }
-                    } else {
-                        print("Wrong format")
-                    }
-                } catch let error {
-                    print(error)
-                }
-            }).resume()
-        }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        arrayMovieList = Dao().load()
         
         self.tableViewMovie.dataSource = self
         self.tableViewMovie.delegate = self
+        self.searchMovie.delegate = self
         
-//        let time = NSDate().timeIntervalSince1970.description
-//        print(time)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: Funções
@@ -75,11 +39,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let field = alertController.textFields?[0] {
-                // store your data
-                UserDefaults.standard.set(field.text, forKey: "movieName")
-                UserDefaults.standard.synchronize()
+                self.progress.startAnimating()
+                self.callAPI(movieName: field.text!)
             } else {
                 // user did not fill field
+                
             }
         }
         
@@ -95,36 +59,113 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //MARK: Métodos de UISearchBarDelegate
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = arrayMovieList.filter({ (movie) -> Bool in
+            let tmp:NSString = movie.title as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchActive = false
+        }else{
+            searchActive = true
+        }
+        
+        self.tableViewMovie.reloadData()
+        
+    }
+    
     //MARK: Métodos de UITbableViewDataSource e UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        let myObject:Movies = arrayMovieList[indexPath.row] as Movies
+        let movie = arrayMovieList[indexPath.row]
+        let photoURL = URL(string: movie.poster)
         
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: NSURL(string: myObject.poster) as! URL)
-            DispatchQueue.main.async {
-                cell.posterMovie.image = UIImage(data: data!)
-            }
+        if(searchActive){
+            cell.titleMovie.text = filtered[indexPath.row].title
+        }else{            
+            cell.titleMovie.text = movie.title
+            cell.yearMovie.text = movie.year
+            
+            cell.posterMovie.setShowActivityIndicator(true)
+            cell.posterMovie.setIndicatorStyle(.gray)
+            cell.posterMovie.sd_setImage(with: photoURL)
+            
+            cell.posterMovie.layer.borderWidth = 1
+            cell.posterMovie.layer.masksToBounds = true
+            cell.posterMovie.layer.borderColor = UIColor.clear.cgColor
+            cell.posterMovie.layer.cornerRadius = cell.posterMovie.frame.height / 2
         }
-        
-        cell.titleMovie.text = arrayMovieList[indexPath.row].title
-        cell.yearMovie.text = arrayMovieList[indexPath.row].year
-        
-//        cell.posterMovie.image = UIImage(named:"iOSwift.jpeg")
-//        cell.titleMovie.text = "Swift - The Best Language of Programming"
-//        cell.yearMovie.text = "2013"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        //return meuArray.count
+        if(searchActive){
+            return filtered.count
+        }
+        return arrayMovieList.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = arrayMovieList[indexPath.row]
+        
+        let detailController = DetailMovieViewController()
+        
+        detailController.movieDetail = movie
+        
+        self.navigationController!.pushViewController(detailController, animated: true)
     }
     
     //MARK: Actions
     @IBAction func addMovie(_ sender: UIButton) {
         presentAlert()
+    }
+    
+    func callAPI(movieName : String) -> Void {
+        let baseURL = "http://www.omdbapi.com/?t=\(movieName)&y=&plot=short&r=json"
+        let url = baseURL.replacingOccurrences(of: " ", with: "%20")
+        
+        Alamofire.request(url).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                
+                if let json = response.result.value as? [String : Any] {
+                    print("JSON: \(json)")
+                    
+                    let movie = Movies(title: json["Title"] as! String, year: json["Year"] as! String, rated: json["Rated"] as! String, genre: json["Genre"] as! String, director: json["Director"] as! String, plot: json["Plot"] as! String, poster: json["Poster"] as! String, type: json["Type"] as! String)
+                    
+                    self.arrayMovieList.append(movie)
+                    Dao().save(self.arrayMovieList)
+                    
+                    self.progress.stopAnimating()
+                    self.tableViewMovie.reloadData()
+                } else {
+                    
+                }
+
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

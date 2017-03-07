@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailMovieViewController" customModule="movieZup" customModuleProvider="target">
+            <connections>
+                <outlet property="directorMovieDetail" destination="Fq6-rq-FiU" id="zLF-LI-u2i"/>
+                <outlet property="genreMovieDetail" destination="w50-Cj-gCr" id="adE-V1-DZj"/>
+                <outlet property="plotMovieDetail" destination="dg7-9u-hA2" id="q3U-Tr-kAR"/>
+                <outlet property="posterMovieDetail" destination="mMs-fE-nBu" id="Y5M-z9-Xt6"/>
+                <outlet property="titleMovieDetail" destination="p1u-Tb-dck" id="q10-zB-DNT"/>
+                <outlet property="view" destination="aap-IU-6pi" id="SZz-qd-5bh"/>
+                <outlet property="yearMovieDetail" destination="WY6-cv-gMc" id="tHP-gV-XAO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="aap-IU-6pi">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1u-Tb-dck">
+                    <rect key="frame" x="16" y="78" width="170" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="v3f-oi-XwW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY6-cv-gMc">
+                    <rect key="frame" x="194" y="78" width="34" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="dGP-uW-WN1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w50-Cj-gCr">
+                    <rect key="frame" x="233" y="78" width="126" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="yo2-io-IYJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMs-fE-nBu">
+                    <rect key="frame" x="16" y="107" width="343" height="255"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="255" id="NYK-Qf-0rw"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Director" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fq6-rq-FiU">
+                    <rect key="frame" x="8" y="370" width="351" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="YUV-Tg-g16"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dg7-9u-hA2">
+                    <rect key="frame" x="16" y="399" width="343" height="248"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="w50-Cj-gCr" firstAttribute="leading" secondItem="WY6-cv-gMc" secondAttribute="trailing" constant="5" id="2bx-gT-ti8"/>
+                <constraint firstItem="Fq6-rq-FiU" firstAttribute="top" secondItem="mMs-fE-nBu" secondAttribute="bottom" constant="8" id="57y-6d-FM7"/>
+                <constraint firstItem="mMs-fE-nBu" firstAttribute="top" secondItem="w50-Cj-gCr" secondAttribute="bottom" constant="8" id="6O4-jb-fFn"/>
+                <constraint firstAttribute="trailing" secondItem="mMs-fE-nBu" secondAttribute="trailing" constant="16" id="80S-aS-H4h"/>
+                <constraint firstItem="mMs-fE-nBu" firstAttribute="leading" secondItem="aap-IU-6pi" secondAttribute="leading" constant="16" id="9kV-ZS-G3N"/>
+                <constraint firstItem="WY6-cv-gMc" firstAttribute="top" secondItem="aap-IU-6pi" secondAttribute="top" constant="78" id="DW4-VQ-4Lu"/>
+                <constraint firstItem="w50-Cj-gCr" firstAttribute="leading" secondItem="WY6-cv-gMc" secondAttribute="trailing" constant="5" id="GIe-FR-Kbl"/>
+                <constraint firstAttribute="bottom" secondItem="dg7-9u-hA2" secondAttribute="bottom" constant="20" id="HwA-S5-cqE"/>
+                <constraint firstItem="WY6-cv-gMc" firstAttribute="leading" secondItem="p1u-Tb-dck" secondAttribute="trailing" constant="8" id="Neo-zm-9oJ"/>
+                <constraint firstItem="Fq6-rq-FiU" firstAttribute="leading" secondItem="aap-IU-6pi" secondAttribute="leading" constant="8" id="Q0q-YB-AUu"/>
+                <constraint firstItem="dg7-9u-hA2" firstAttribute="leading" secondItem="aap-IU-6pi" secondAttribute="leading" constant="16" id="a2e-In-Gcb"/>
+                <constraint firstItem="WY6-cv-gMc" firstAttribute="leading" secondItem="p1u-Tb-dck" secondAttribute="trailing" constant="8" id="ca4-z1-7U2"/>
+                <constraint firstItem="dg7-9u-hA2" firstAttribute="top" secondItem="Fq6-rq-FiU" secondAttribute="bottom" constant="8" id="fPv-YT-sKY"/>
+                <constraint firstAttribute="trailing" secondItem="dg7-9u-hA2" secondAttribute="trailing" constant="16" id="qA1-V3-h0H"/>
+                <constraint firstItem="p1u-Tb-dck" firstAttribute="top" secondItem="aap-IU-6pi" secondAttribute="top" constant="78" id="rf5-0K-xPT"/>
+                <constraint firstAttribute="trailing" secondItem="Fq6-rq-FiU" secondAttribute="trailing" constant="16" id="t2H-uM-Fzl"/>
+                <constraint firstItem="w50-Cj-gCr" firstAttribute="top" secondItem="aap-IU-6pi" secondAttribute="top" constant="78" id="vei-Ib-uER"/>
+                <constraint firstAttribute="trailing" secondItem="w50-Cj-gCr" secondAttribute="trailing" constant="16" id="wLh-oJ-FJK"/>
+                <constraint firstItem="p1u-Tb-dck" firstAttribute="leading" secondItem="aap-IU-6pi" secondAttribute="leading" constant="16" id="yFV-b4-dwe"/>
+            </constraints>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
+        </view>
+    </objects>
+</document>
